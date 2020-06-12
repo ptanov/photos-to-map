@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>photos-to-map.kml</name>
+
+	<StyleMap id="mainStyleMap">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#mainStyle</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#mainStyle</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="mainStyle">
+		<IconStyle>
+			<scale>0.5</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-diamond.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-diamond-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+
