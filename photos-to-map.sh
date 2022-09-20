@@ -2,7 +2,6 @@
 
 set -e
 
-INPUT=data.cvs
 IFS=$'\t'
 
 cat "$(dirname "${0}")/prefix.xml"
@@ -22,7 +21,7 @@ while read -r Directory FileName GPSLatitude GPSLongitude GPSAltitude GPSDateTim
 
 	echo "    <Placemark>"
 	echo "        <name>[${GPSDateTime:0:10}] ${FileName}</name>"
-	echo "        <description><![CDATA[<p><a href=\"https://photos.google.com/search/${filter}\">Days</a>, <a href=\"https://photos.google.com/search/${GPSDateTime:0:10}\">Day</a>, <a href=\"https://photos.google.com/search/${GPSDateTime:0:10}%20${FileName}\">Exact</a></p><p>${Directory}/<b>${FileName}</b></p><p><b>Date:</b> ${GPSDateTime}</p>]]></description>"
+	echo "        <description><![CDATA[<p><a href=\"https://photos.google.com/search/${GPSDateTime:0:10}%20${FileName}\"><img height='200px' src='${Directory}/${FileName}' /></a></p><p><a href=\"https://photos.google.com/search/${filter}\">Days</a>, <a href=\"https://photos.google.com/search/${GPSDateTime:0:10}\">Day</a>, <a href=\"https://photos.google.com/search/${GPSDateTime:0:10}%20${FileName}\">Exact</a></p><p>${Directory}/<b>${FileName}</b></p><p><b>Date:</b> ${GPSDateTime}</p>]]></description>"
 	echo "        <styleUrl>#mainStyleMap</styleUrl>"
 	echo "        <Point><coordinates>${coordinates}</coordinates></Point>"
 	echo "    </Placemark>"

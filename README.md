@@ -2,6 +2,8 @@
 
 This simple script extracts GPS coordinates from all images in a directory. Then it creates KML file with coordinates of all images. There is a link to open the image in Google Photos (if you have a copy of the images in Google Photos) - all photos from previous and next day, all photos from the day of the photo and exact photo are the three options. Then you can always open KML files in any GPS software, e.g. Google Earth ([web](https://earth.google.com/web/)/[desktop](https://www.google.com/earth/versions/#download-pro)/[Android](https://play.google.com/store/apps/details?id=com.google.earth&hl=en)/[iPhone](https://apps.apple.com/us/app/google-earth/id293622097)), [GpsPrune](https://gpsprune.activityworkshop.net/), etc.
 
+When using Google Earth you can download different OpenStreet maps layers from [Google Earth Map Overlays](http://ge-map-overlays.appspot.com/) in order to have hike trails like this: ![Google Earth + Komoot](screenshots/desktop-google-earth-komoot.png)
+
 There is a docker image here: <https://hub.docker.com/r/ptanov/photos-to-map>. The source code is available here: <https://github.com/ptanov/photos-to-map>.
 
 ## Running the script
@@ -31,6 +33,7 @@ There is a docker image here: <https://hub.docker.com/r/ptanov/photos-to-map>. T
 ### [Desktop](https://www.google.com/earth/versions/#download-pro)
 
 - ![Initial](screenshots/desktop-google-earth-initial.png)
+- ![Google Earth + Komoot](screenshots/desktop-google-earth-komoot.png)
 
 ### [Android](https://play.google.com/store/apps/details?id=com.google.earth&hl=en)
 
@@ -38,7 +41,7 @@ There is a docker image here: <https://hub.docker.com/r/ptanov/photos-to-map>. T
 
 ## What if I don't have GPS coordinates
 
-You can download your Location History (if enabled) from [Google Takeout](https://takeout.google.com/settings/takeout). Select only `Google Location History` and use `KML` format (instead of `JSON`). Then you can create a copy of your photos and run this command targeting the COPY of the images (it will set approximately location to the images) `exiftool -api GeoMaxIntSecs=18000 -api GeoMaxExtSecs=18000 -overwrite_original -geotag "Location History.kml" "PATH-TO-IMAGES/*"`. For more information check [exiftool](https://exiftool.org/ExifTool.html).
+You can download your Location History (if enabled) from [Google Takeout](https://takeout.google.com/settings/takeout). Select only `Google Location History` and use `KML` format (instead of `JSON`). Then you can create a copy of your photos (check the script `copy-image-exif.sh`) and run this command targeting the COPY of the images (it will set approximately location to the images) `exiftool -api GeoMaxIntSecs=18000 -api GeoMaxExtSecs=18000 -overwrite_original -geotag "Location History.kml" "PATH-TO-IMAGES/*"` (You can use 240 instead of 18000 to geotag only exact matches, e.g. when you have gpx file: `exiftool -api GeoMaxIntSecs=240 -api GeoMaxExtSecs=240 -overwrite_original -geotag "*.gpx" "PATH-TO-IMAGES/*"`). For more information check [exiftool](https://exiftool.org/ExifTool.html).
 
 ## Docker
 
